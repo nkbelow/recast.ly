@@ -11,6 +11,15 @@ class App extends React.Component {
       videoInPlayer: video
     });
   }
+  getVideos(data) {
+    this.setState({
+      videos: data,
+      videoInPlayer: data[0]
+    });
+  }
+  componentDidMount() {
+    this.props.searchYouTube({key: YOUTUBE_API_KEY, query: 'hello', max: 5 }, this.getVideos.bind(this));
+  }
   render() {
     return (
       <div>
