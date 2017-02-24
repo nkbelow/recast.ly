@@ -2,8 +2,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      videos: exampleVideoData,
-      videoInPlayer: exampleVideoData[0]
+      videos: [],
+      videoInPlayer: {snippet: {title: null, description: null}, id: {videoId: null}}
     };
   }
   setVideo(video) {
@@ -18,12 +18,18 @@ class App extends React.Component {
     });
   }
   componentDidMount() {
-    this.props.searchYouTube({key: YOUTUBE_API_KEY, query: 'hello', max: 5 }, this.getVideos.bind(this));
+    this.search();
+  }
+  newSearch(event) {
+    this.search(event.target.value);
+  }
+  search(query = '') {
+    this.props.searchYouTube({key: YOUTUBE_API_KEY, query: query, max: 5 }, this.getVideos.bind(this));
   }
   render() {
     return (
       <div>
-        <Nav />
+        <Nav callbackApp={this.newSearch.bind(this)}/>
         <div className="col-md-7">
           <VideoPlayer video={this.state.videoInPlayer}/>
         </div>
