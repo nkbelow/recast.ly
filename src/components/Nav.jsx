@@ -1,7 +1,7 @@
 var Nav = (props) => (
   <nav className="navbar">
     <div className="col-md-6 col-md-offset-3">
-      <Search onkeyup={(event) => { props.callbackApp(event); }}/>
+      <Search onkeyup={(event) => { props.callbackApp(event.target.value); }}/>
     </div>
   </nav>
 );

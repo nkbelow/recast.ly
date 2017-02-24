@@ -20,8 +20,8 @@ class App extends React.Component {
   componentDidMount() {
     this.search();
   }
-  newSearch(event) {
-    this.search(event.target.value);
+  newSearch(query) {
+    this.search(query);
   }
   search(query = '') {
     this.props.searchYouTube({key: YOUTUBE_API_KEY, query: query, max: 5 }, this.getVideos.bind(this));

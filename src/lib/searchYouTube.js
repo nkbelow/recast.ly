@@ -19,4 +19,4 @@ var searchYouTube = (options, callback) => {
   });
 };
 
-window.searchYouTube = searchYouTube;
+window.searchYouTube = _.throttle(searchYouTube, 500);

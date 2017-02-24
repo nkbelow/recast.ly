@@ -3,7 +3,7 @@ var VideoList = (props) => (
       {props.videos.map(video =>
         <VideoListEntry callbackList={function(video) {
           props.callbackApp(video);
-        }.bind(this, video)} video={video} />
+        }.bind(this, video)} video={video} key={video.id.videoId} />
       )}
     </div>
   );
